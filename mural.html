@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Pet Resgate - Mural</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand"><img src="{% static 'img/navbar-logo.png' %}" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="cadastropet">Perdi meu pet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="animais">Encontre um pet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cadastroevento">Criar evento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home">Página inicial</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- mural-->
+        {% block content %}
+    {% for i in obj %}
+        <div class="container p-4">
+            <a class="post-link" data-bs-toggle="modal" href="#modal{{forloop.counter}}">
+                <img class="img-fluid mx-auto" src="{{i.imagem_evento.url}}" alt="Foto" height="200" width="200"/>
+                    </a>
+                    <div class="post-caption">
+                        <div class="caption-heading"></div>
+                        <div class="caption-subheading"><strong>{{i.nome_evento}}</strong></div>
+                        <div class="caption-subheading">{{i.tipo_evento}}</div>
+                        <div class="caption-subheading">{{i.data_evento}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Vista detalhada da postagem-->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="modal{{forloop.counter}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                <img class="img-fluid d-block mx-auto" src="{{i.imagem_evento.url}}" alt="Foto" />
+                                <h2 class="text-uppercase">{{i.nome_evento}}</h2>
+                                <p class="item-intro"><strong>Tipo: </strong>{{i.tipo_evento}}</p>
+                                <p class="item-intro"><strong>Data: </strong>{{i.data_evento}}</p>
+                                <p class="item-intro"><strong>Endereço: </strong>{{i.local_evento}}</p>
+                                <p class="item-intro"><strong>Detalhes: </strong>{{i.detalhes_evento}}</p>
+                                <ul class="list-inline">
+                            </ul>
+                            <button class="btn btn-primary btn-m text-uppercase" data-bs-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Fechar
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">
+                        <li><a class="link-dark text-decoration-none me-3">Univesp Eixo Computação 2024</a></li>
+                        <li><a class="link-dark link-underline link-underline-opacity-100 me-3" href="termos">Termos de Uso</a></li>
+                    </div>
+                </div>
+            </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html>
