@@ -80,8 +80,8 @@ DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'find_pets_db',
-        'USER': 'melvin',
-        'PASSWORD': 'Senh#94*nome',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306'
     }
